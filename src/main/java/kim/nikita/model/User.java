@@ -9,8 +9,12 @@ import javax.validation.constraints.Size;
 import java.util.Date;
 import java.util.Set;
 
+@NamedQueries({
 
-@Entity(name="users")
+        @NamedQuery(name = "GET_ALL_SORTED", query = "SELECT u FROM User u LEFT JOIN FETCH u.roles ORDER BY u.name, u.email")
+})
+@Entity
+@Table(name="users")
 public class User extends AbstractNamedEntity{
 
 

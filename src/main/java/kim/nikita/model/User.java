@@ -1,31 +1,24 @@
 package kim.nikita.model;
 
-import java.time.LocalDateTime;
+
+import java.util.Date;
 import java.util.Set;
 
-public class User {
+public class User extends AbstractNamedEntity{
 
-    private int id;
-    private String name;
+
     private String email;
-    private LocalDateTime registered;
-    private boolean admin;
+    private Date registered =  new Date();
+    private String password;
+    private boolean enabled=true;
+    private Set<Role> roles;
 
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+    public User(Integer id, String name, String email, String password, Set<Role> roles) {
+        super(id, name);
+        this.email = email;
+        this.password = password;
+        this.roles = roles;
     }
 
     public String getEmail() {
@@ -36,28 +29,48 @@ public class User {
         this.email = email;
     }
 
-    public LocalDateTime getRegistered() {
+    public Date getRegistered() {
         return registered;
     }
 
-    public void setRegistered(LocalDateTime registered) {
+    public void setRegistered(Date registered) {
         this.registered = registered;
     }
 
-
-    public boolean isAdmin() {
-        return admin;
+    public String getPassword() {
+        return password;
     }
 
-    public void setAdmin(boolean admin) {
-        this.admin = admin;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public User(int id, String name, String email, LocalDateTime registered, boolean admin) {
-        this.id = id;
-        this.name = name;
-        this.email = email;
-        this.registered = registered;
-        this.admin = admin;
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", registered=" + registered +
+                ", password='" + password + '\'' +
+                ", enabled=" + enabled +
+                ", roles=" + roles +
+                '}';
     }
 }

@@ -64,6 +64,7 @@ public class JpaUserRepositoryTest {
     @Test
     public void update()
         {
+
             assertEquals(updatedUser,repository.save(updatedUser));
         }
 

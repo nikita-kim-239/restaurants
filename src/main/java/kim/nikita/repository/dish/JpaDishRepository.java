@@ -1,6 +1,7 @@
-package kim.nikita.repository.user;
+package kim.nikita.repository.dish;
 
 
+import kim.nikita.model.Dish;
 import kim.nikita.model.User;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -11,44 +12,36 @@ import javax.persistence.Query;
 import java.util.List;
 
 @Repository
-public class JpaUserRepository implements UserRepository{
-
+public class JpaDishRepository implements DishRepository{
 
     @PersistenceContext
     private EntityManager em;
 
     @Override
     @Transactional
-    public User save(User user) {
-
-        if (user.isNew()) {
-            em.persist(user);
-            return user;
+    public Dish save(Dish dish) {
+        if (dish.isNew()) {
+            em.persist(dish);
+            return dish;
         } else {
-            return em.merge(user);
+            return em.merge(dish);
         }
-
     }
 
     @Override
     @Transactional
     public boolean delete(int id) {
-
-        Query query = em.createQuery("DELETE FROM User u WHERE u.id=:id");
+        Query query = em.createQuery("DELETE FROM Dish d WHERE d.id=:id");
         return query.setParameter("id", id).executeUpdate() != 0;
-
     }
 
     @Override
-    public User get(int id) {
-
-        return em.find(User.class, id);
-
+    public Dish get(int id) {
+        return em.find(Dish.class, id);
     }
 
     @Override
-    public List<User> getAll() {
-
-        return em.createNamedQuery("GET_ALL_SORTED",User.class).getResultList();
+    public List<Dish> getAll() {
+        return em.createNamedQuery("GET_ALL_DISHES",Dish.class).getResultList();
     }
 }

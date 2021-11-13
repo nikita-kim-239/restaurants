@@ -1,4 +1,4 @@
-package kim.nikita.repository.restaurants;
+package kim.nikita.repository.restaurant;
 
 import kim.nikita.model.Restaurant;
 

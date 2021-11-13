@@ -35,4 +35,6 @@ public abstract class AbstractNamedEntity extends AbstractBaseEntity{
         {
             return super.toString()+" ("+name+")";
         }
+
+
 }

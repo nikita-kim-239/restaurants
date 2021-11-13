@@ -1,32 +1,30 @@
 package kim.nikita.model;
 
-public class Restaurant {
 
-    private int id;
-    private String name;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+
+@Entity
+@Table(name="restaurants")
+public class Restaurant extends AbstractNamedEntity{
+
+    @Column(name = "address", nullable = false,unique = true)
+    @NotBlank
+    @Size(min = 5, max = 40)
     private String address;
 
     public Restaurant(int id, String name, String address) {
-        this.id = id;
-        this.name = name;
+        super(id,name);
         this.address = address;
     }
 
-    public int getId() {
-        return id;
+    public Restaurant() {
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public String getAddress() {
         return address;
@@ -34,5 +32,14 @@ public class Restaurant {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    @Override
+    public String toString() {
+        return "Restaurant{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", address='" + address + '\'' +
+                '}';
     }
 }

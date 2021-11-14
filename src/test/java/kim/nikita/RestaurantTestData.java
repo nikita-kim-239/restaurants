@@ -20,6 +20,8 @@ public class RestaurantTestData {
     public static final Restaurant ITALIAN_RESTAURANT =new Restaurant(ITALIAN_RESTAURANT_ID,"Italian");
     public static final Restaurant CHINESE_RESTAURANT =new Restaurant(CHINESE_RESTAURANT_ID,"Chinese");
 
+    public static final Restaurant UPDATED_RESTAURANT =new Restaurant(CHINESE_RESTAURANT_ID,"Updated");
+
     public static Restaurant getNew()
     {
         return new Restaurant(null,"New Restaurant");

@@ -1,10 +1,9 @@
 package kim.nikita.model;
 
 
-import javax.persistence.Entity;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name="dishes")
@@ -14,6 +13,10 @@ import javax.persistence.Table;
 })
 public class Dish extends AbstractNamedEntity{
 
+
+    @OneToOne(mappedBy="dish")
+    private Menu menu;
+
     public Dish()
         {
 
@@ -22,6 +25,7 @@ public class Dish extends AbstractNamedEntity{
     public Dish(Integer id,String name)
         {
             super(id,name);
+
         }
 
     @Override
@@ -30,5 +34,13 @@ public class Dish extends AbstractNamedEntity{
                 "id=" + id +
                 ", name='" + name + '\'' +
                 '}';
+    }
+
+    public Menu getMenu() {
+        return menu;
+    }
+
+    public void setMenu(Menu menu) {
+        this.menu = menu;
     }
 }

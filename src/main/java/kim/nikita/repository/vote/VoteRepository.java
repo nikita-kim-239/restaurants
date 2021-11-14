@@ -1,19 +1,17 @@
 package kim.nikita.repository.vote;
 
-import kim.nikita.model.User;
 import kim.nikita.model.Vote;
 
 import java.util.List;
 
 public interface VoteRepository {
 
-    Vote save(Vote vote);
+    Vote save(Vote Vote);
 
-    boolean delete(int id);
+    boolean delete(Integer id);
 
-    Vote get(int id);
+    Vote get(Integer id);
 
     List<Vote> getAll();
-
-
+    
 }

@@ -6,12 +6,12 @@ import java.util.List;
 
 public interface UserRepository {
 
-    User save(User user);
+    User save(User User);
 
-    boolean delete(int id);
+    boolean delete(Integer id);
 
-    User get(int id);
+    User get(Integer id);
 
     List<User> getAll();
-
+    
 }

@@ -3,7 +3,6 @@ package kim.nikita.repository.restaurant;
 
 import kim.nikita.model.Restaurant;
 
-import kim.nikita.model.User;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,10 +13,13 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
 
+import static kim.nikita.MenuTestData.*;
+import static kim.nikita.MenuTestData.MENU_UPDATED;
 import static kim.nikita.RestaurantTestData.*;
 import static kim.nikita.RestaurantTestData.assertMatch;
 import static kim.nikita.RestaurantTestData.getNew;
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
+import static org.junit.Assert.assertNull;
 
 
 @ContextConfiguration({
@@ -50,4 +52,30 @@ public class JpaRestaurantTest {
         assertEquals(repository.get(newId),created);
     }
 
+    @Test
+    public void delete()
+    {
+
+        assertTrue(repository.delete(RUSSIAN_RESTAURANT_ID));
+        assertNull(repository.get(RUSSIAN_RESTAURANT_ID));
+    }
+
+    @Test
+    public void deleteNotFound()
+    {
+        assertFalse(repository.delete(-1));
+    }
+
+    @Test
+    public void getById()
+    {
+        assertEquals(RUSSIAN_RESTAURANT,repository.get(RUSSIAN_RESTAURANT_ID));
+    }
+
+    @Test
+    public void update()
+    {
+
+        assertEquals(UPDATED_RESTAURANT,repository.save(UPDATED_RESTAURANT));
+    }
 }

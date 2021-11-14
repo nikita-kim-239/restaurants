@@ -12,7 +12,7 @@ import javax.persistence.*;
 @Table(name="votes")
 public class Vote extends AbstractBaseEntity{
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
 

@@ -1,3 +1,4 @@
+DELETE FROM menus;
 DELETE FROM votes;
 DELETE FROM user_roles;
 DELETE FROM users;
@@ -32,6 +33,13 @@ INSERT INTO votes (user_id, restaurant_id)
 VALUES (100000,100008),
        (100001,100009);
 
+
+INSERT INTO menus (restaurant_id,dish_id,price)
+VALUES (100008,100005,100),
+       (100008,100006,200),
+       (100009,100004,50),
+       (100010,100003,90),
+       (100011,100007,300);
 
 
 

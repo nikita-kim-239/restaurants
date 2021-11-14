@@ -12,7 +12,7 @@ import java.util.List;
 
 
 @Repository
-public class JpaRestaurantRepository implements RestaurantRepository{
+public class JpaRestaurantRepository implements RestaurantRepository {
 
     @PersistenceContext
     private EntityManager em;
@@ -30,13 +30,13 @@ public class JpaRestaurantRepository implements RestaurantRepository{
 
     @Override
     @Transactional
-    public boolean delete(int id) {
+    public boolean delete(Integer id) {
         Query query = em.createQuery("DELETE FROM Restaurant r WHERE r.id=:id");
         return query.setParameter("id", id).executeUpdate() != 0;
     }
 
     @Override
-    public Restaurant get(int id) {
+    public Restaurant get(Integer id) {
         return em.find(Restaurant.class,id);
     }
 

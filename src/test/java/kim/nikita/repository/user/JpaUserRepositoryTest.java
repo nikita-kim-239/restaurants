@@ -3,7 +3,6 @@ package kim.nikita.repository.user;
 
 
 import kim.nikita.model.User;
-import kim.nikita.util.NotFoundException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

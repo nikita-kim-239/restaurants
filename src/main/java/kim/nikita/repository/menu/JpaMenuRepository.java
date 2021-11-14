@@ -1,7 +1,6 @@
-package kim.nikita.repository.user;
+package kim.nikita.repository.menu;
 
-
-import kim.nikita.model.User;
+import kim.nikita.model.Menu;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -11,44 +10,36 @@ import javax.persistence.Query;
 import java.util.List;
 
 @Repository
-public class JpaUserRepository implements UserRepository {
-
+public class JpaMenuRepository implements MenuRepository {
 
     @PersistenceContext
     private EntityManager em;
 
     @Override
     @Transactional
-    public User save(User user) {
-
-        if (user.isNew()) {
-            em.persist(user);
-            return user;
+    public Menu save(Menu menu) {
+        if (menu.isNew()) {
+            em.persist(menu);
+            return menu;
         } else {
-            return em.merge(user);
+            return em.merge(menu);
         }
-
     }
 
     @Override
     @Transactional
     public boolean delete(Integer id) {
-
-        Query query = em.createQuery("DELETE FROM User u WHERE u.id=:id");
+        Query query = em.createQuery("DELETE FROM Menu m WHERE m.id=:id");
         return query.setParameter("id", id).executeUpdate() != 0;
-
     }
 
     @Override
-    public User get(Integer id) {
-
-        return em.find(User.class, id);
-
+    public Menu get(Integer id) {
+        return em.find(Menu.class,id);
     }
 
     @Override
-    public List<User> getAll() {
-
-        return em.createNamedQuery("GET_ALL_SORTED",User.class).getResultList();
+    public List<Menu> getAll() {
+        return em.createNamedQuery("GET_ALL_MENUS", Menu.class).getResultList();
     }
 }

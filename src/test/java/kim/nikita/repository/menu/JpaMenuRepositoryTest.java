@@ -1,8 +1,9 @@
-package kim.nikita.repository.dish;
+package kim.nikita.repository.menu;
 
 
-import kim.nikita.model.Dish;
 
+
+import kim.nikita.model.Menu;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,12 +12,12 @@ import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.jdbc.SqlConfig;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
-import static kim.nikita.DishTestData.*;
 
+import static kim.nikita.DishTestData.*;
+import static kim.nikita.DishTestData.BREAD_UPDATED;
+import static kim.nikita.MenuTestData.*;
 import static org.junit.Assert.*;
 
 @ContextConfiguration({
@@ -25,27 +26,27 @@ import static org.junit.Assert.*;
 })
 @RunWith(SpringRunner.class)
 @Sql(scripts = "classpath:db/populateDB.sql", config = @SqlConfig(encoding = "UTF-8"))
-public class JpaDishRepositoryTest {
+public class JpaMenuRepositoryTest {
 
     @Autowired
-    private DishRepository repository;
+    private MenuRepository repository;
+
 
     @Test
     public void getAll()
     {
-        List<Dish> all=repository.getAll();
-        List<Dish> expected= Arrays.asList(BREAD, JUICE, MEAT, SALAD, TEA, WATER);
-        assertEquals(expected,all);
+        List<Menu> all=repository.getAll();
+        assertMatch(all,MENU1,MENU2,MENU3,MENU4,MENU5);
     }
 
     @Test
     public void create()
     {
-        Dish iceCream=getNew();
-        Dish created=repository.save(iceCream);
+        Menu newMenu=getNewMenu();
+        Menu created=repository.save(newMenu);
         Integer newId=created.getId();
-        iceCream.setId(newId);
-        assertEquals(iceCream,created);
+        newMenu.setId(newId);
+        assertEquals(newMenu,created);
 
     }
 
@@ -53,8 +54,8 @@ public class JpaDishRepositoryTest {
     public void delete()
     {
 
-        assertTrue(repository.delete(BREAD_ID));
-        assertNull(repository.get(BREAD_ID));
+        assertTrue(repository.delete(MENU1_ID));
+        assertNull(repository.get(MENU1_ID));
     }
 
     @Test
@@ -68,14 +69,14 @@ public class JpaDishRepositoryTest {
     @Test
     public void getById()
     {
-        assertEquals(BREAD,repository.get(BREAD_ID));
+        assertEquals(MENU1,repository.get(MENU1_ID));
     }
 
     @Test
     public void update()
     {
 
-        assertEquals(BREAD_UPDATED,repository.save(BREAD_UPDATED));
+        assertEquals(MENU_UPDATED,repository.save(MENU_UPDATED));
     }
 
 }

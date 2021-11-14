@@ -1,4 +1,5 @@
 DROP TABLE IF EXISTS votes;
+DROP TABLE IF EXISTS menus;
 DROP TABLE IF EXISTS  user_roles;
 DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS dishes;
@@ -47,5 +48,12 @@ CREATE TABLE votes(
     user_id          INTEGER  REFERENCES users (id) ON DELETE CASCADE NOT NULL,
     restaurant_id    INTEGER  REFERENCES restaurants (id) ON DELETE CASCADE NOT NULL
 
+);
+
+CREATE TABLE menus(
+    id               INTEGER PRIMARY KEY DEFAULT nextval('global_seq'),
+    restaurant_id    INTEGER  REFERENCES restaurants (id) ON DELETE CASCADE NOT NULL,
+    dish_id          INTEGER  REFERENCES dishes (id) ON DELETE CASCADE NOT NULL,
+    price            INTEGER NOT NULL
 );
 

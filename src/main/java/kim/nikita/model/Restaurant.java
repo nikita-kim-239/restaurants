@@ -4,6 +4,7 @@ package kim.nikita.model;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import java.util.HashSet;
 import java.util.Set;
 
 
@@ -16,25 +17,27 @@ import java.util.Set;
 public class Restaurant extends AbstractNamedEntity{
 
 
+        @OneToMany(mappedBy="restaurant")
+        private Set<Menu> menus;
 
-    @OneToMany
-    @JoinColumn(name = "restaurant_id")
-    private Set<Vote> votes;
+        @OneToMany
+        @JoinColumn(name = "restaurant_id")
+        private Set<Vote> votes;
 
-    public Restaurant(Integer id, String name) {
-        super(id,name);
+        public Restaurant(Integer id, String name) {
+            super(id,name);
 
-    }
+        }
 
-    public Restaurant() {
-    }
+        public Restaurant() {
+        }
 
 
-    @Override
-    public String toString() {
-        return "Restaurant{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
-    }
+        @Override
+        public String toString() {
+            return "Restaurant{" +
+                    "id=" + id +
+                    ", name='" + name + '\'' +
+                    '}';
+        }
 }

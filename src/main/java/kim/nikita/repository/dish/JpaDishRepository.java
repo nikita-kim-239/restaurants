@@ -2,7 +2,6 @@ package kim.nikita.repository.dish;
 
 
 import kim.nikita.model.Dish;
-import kim.nikita.model.User;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -12,7 +11,7 @@ import javax.persistence.Query;
 import java.util.List;
 
 @Repository
-public class JpaDishRepository implements DishRepository{
+public class JpaDishRepository implements DishRepository {
 
     @PersistenceContext
     private EntityManager em;
@@ -30,13 +29,13 @@ public class JpaDishRepository implements DishRepository{
 
     @Override
     @Transactional
-    public boolean delete(int id) {
+    public boolean delete(Integer id) {
         Query query = em.createQuery("DELETE FROM Dish d WHERE d.id=:id");
         return query.setParameter("id", id).executeUpdate() != 0;
     }
 
     @Override
-    public Dish get(int id) {
+    public Dish get(Integer id) {
         return em.find(Dish.class, id);
     }
 

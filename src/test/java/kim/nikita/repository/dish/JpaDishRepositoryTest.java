@@ -55,6 +55,14 @@ public class JpaDishRepositoryTest {
     }
 
     @Test
+    public void deleteNotFound()
+    {
+
+        assertFalse(repository.delete(-1));
+
+    }
+
+    @Test
     public void getById()
     {
         assertEquals(BREAD,repository.get(BREAD_ID));

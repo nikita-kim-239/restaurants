@@ -1,61 +1,43 @@
 package kim.nikita.model;
 
-import java.time.LocalDateTime;
 
-public class Vote {
+import javax.persistence.*;
 
-    private int id;
-    private int userId;
-    private int restaurantId;
-    private LocalDateTime timeOfVote;
-    private boolean current;
 
-    public Vote(int id, int userId, int restaurantId, LocalDateTime timeOfVote, boolean current) {
-        this.id = id;
-        this.userId = userId;
-        this.restaurantId = restaurantId;
-        this.timeOfVote = timeOfVote;
-        this.current = current;
+@NamedQueries({
+
+        @NamedQuery(name = "GET_ALL_VOTES", query = "SELECT v FROM Vote v")
+})
+@Entity
+@Table(name="votes")
+public class Vote extends AbstractBaseEntity{
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    private User user;
+
+
+    @ManyToOne
+    @JoinColumn(name = "restaurant_id", insertable = true, updatable = true)
+    private Restaurant restaurant;
+
+
+    public Vote() {
+
     }
 
-    public int getId() {
-        return id;
+    public Vote(Integer id, User user, Restaurant restaurant) {
+        super(id);
+        this.user = user;
+        this.restaurant = restaurant;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
-
-    public int getRestaurantId() {
-        return restaurantId;
-    }
-
-    public void setRestaurantId(int restaurantId) {
-        this.restaurantId = restaurantId;
-    }
-
-    public LocalDateTime getTimeOfVote() {
-        return timeOfVote;
-    }
-
-    public void setTimeOfVote(LocalDateTime timeOfVote) {
-        this.timeOfVote = timeOfVote;
-    }
-
-
-    public boolean isCurrent() {
-        return current;
-    }
-
-    public void setCurrent(boolean current) {
-        this.current = current;
+    @Override
+    public String toString() {
+        return "Vote{" +
+                "id=" + id +
+                ", user=" + user +
+                ", restaurant=" + restaurant +
+                '}';
     }
 }

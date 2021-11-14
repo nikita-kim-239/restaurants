@@ -36,6 +36,7 @@ public class JpaUserRepositoryTest {
             assertMatch(all,user,admin);
         }
 
+
     @Test
     public void create()
         {
@@ -53,6 +54,14 @@ public class JpaUserRepositoryTest {
 
             assertTrue(repository.delete(USER_ID));
             assertNull(repository.get(USER_ID));
+        }
+
+    @Test
+    public void deleteNotFound()
+        {
+
+            assertFalse(repository.delete(-1));
+
         }
 
     @Test

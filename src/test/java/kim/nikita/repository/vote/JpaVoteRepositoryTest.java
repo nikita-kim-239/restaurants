@@ -1,7 +1,6 @@
 package kim.nikita.repository.vote;
 
 
-
 import kim.nikita.model.Restaurant;
 import kim.nikita.model.User;
 import kim.nikita.model.Vote;
@@ -36,51 +35,45 @@ public class JpaVoteRepositoryTest {
     private VoteRepository repository;
 
     @Test
-    public void getAll()
-    {
-        List<Vote> all=repository.getAll();
-        assertMatch(all,VOTE1,VOTE2);
+    public void getAll() {
+        List<Vote> all = repository.getAll();
+        assertMatch(all, VOTE1, VOTE2);
     }
 
 
     @Test
-    public void create()
-    {
-        Vote actual =getNewVote();
-        Vote expected=repository.save(actual);
-        Integer newId=expected.getId();
+    public void create() {
+        Vote actual = getNewVote();
+        Vote expected = repository.save(actual);
+        Integer newId = expected.getId();
         actual.setId(newId);
-        assertEquals(expected,actual);
-        assertEquals(repository.get(newId),actual);
+        assertEquals(expected, actual);
+        assertEquals(repository.get(newId), actual);
     }
 
     @Test
-    public void delete()
-    {
+    public void delete() {
 
         assertTrue(repository.delete(VOTE1_ID));
         assertNull(repository.get(VOTE1_ID));
     }
 
     @Test
-    public void deleteNotFound()
-    {
+    public void deleteNotFound() {
 
         assertFalse(repository.delete(-1));
 
     }
 
     @Test
-    public void getById()
-    {
-        assertEquals(VOTE1,repository.get(VOTE1_ID));
+    public void getById() {
+        assertEquals(VOTE1, repository.get(VOTE1_ID));
     }
 
     @Test
-    public void update()
-    {
+    public void update() {
 
-        assertEquals(UPDATED_VOTE,repository.save(UPDATED_VOTE));
+        assertEquals(UPDATED_VOTE, repository.save(UPDATED_VOTE));
     }
 
 }

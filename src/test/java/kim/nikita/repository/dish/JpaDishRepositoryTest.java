@@ -31,51 +31,45 @@ public class JpaDishRepositoryTest {
     private DishRepository repository;
 
     @Test
-    public void getAll()
-    {
-        List<Dish> all=repository.getAll();
-        List<Dish> expected= Arrays.asList(BREAD, JUICE, MEAT, SALAD, TEA, WATER);
-        assertEquals(expected,all);
+    public void getAll() {
+        List<Dish> all = repository.getAll();
+        List<Dish> expected = Arrays.asList(BREAD, JUICE, MEAT, SALAD, TEA, WATER);
+        assertEquals(expected, all);
     }
 
     @Test
-    public void create()
-    {
-        Dish iceCream=getNew();
-        Dish created=repository.save(iceCream);
-        Integer newId=created.getId();
+    public void create() {
+        Dish iceCream = getNew();
+        Dish created = repository.save(iceCream);
+        Integer newId = created.getId();
         iceCream.setId(newId);
-        assertEquals(iceCream,created);
+        assertEquals(iceCream, created);
 
     }
 
     @Test
-    public void delete()
-    {
+    public void delete() {
 
         assertTrue(repository.delete(BREAD_ID));
         assertNull(repository.get(BREAD_ID));
     }
 
     @Test
-    public void deleteNotFound()
-    {
+    public void deleteNotFound() {
 
         assertFalse(repository.delete(-1));
 
     }
 
     @Test
-    public void getById()
-    {
-        assertEquals(BREAD,repository.get(BREAD_ID));
+    public void getById() {
+        assertEquals(BREAD, repository.get(BREAD_ID));
     }
 
     @Test
-    public void update()
-    {
+    public void update() {
 
-        assertEquals(BREAD_UPDATED,repository.save(BREAD_UPDATED));
+        assertEquals(BREAD_UPDATED, repository.save(BREAD_UPDATED));
     }
 
 }

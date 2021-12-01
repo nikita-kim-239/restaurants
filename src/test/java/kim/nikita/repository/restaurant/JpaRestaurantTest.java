@@ -35,47 +35,41 @@ public class JpaRestaurantTest {
 
 
     @Test
-    public void getAll()
-    {
-        List<Restaurant> all=repository.getAll();
-        assertMatch(all,CHINESE_RESTAURANT,FRENCH_RESTAURANT,ITALIAN_RESTAURANT,RUSSIAN_RESTAURANT);
+    public void getAll() {
+        List<Restaurant> all = repository.getAll();
+        assertMatch(all, CHINESE_RESTAURANT, FRENCH_RESTAURANT, ITALIAN_RESTAURANT, RUSSIAN_RESTAURANT);
     }
 
     @Test
-    public void create()
-    {
-        Restaurant restaurant=getNew();
-        Restaurant created=repository.save(restaurant);
-        Integer newId=created.getId();
+    public void create() {
+        Restaurant restaurant = getNew();
+        Restaurant created = repository.save(restaurant);
+        Integer newId = created.getId();
         restaurant.setId(newId);
-        assertEquals(created,restaurant);
-        assertEquals(repository.get(newId),created);
+        assertEquals(created, restaurant);
+        assertEquals(repository.get(newId), created);
     }
 
     @Test
-    public void delete()
-    {
+    public void delete() {
 
         assertTrue(repository.delete(RUSSIAN_RESTAURANT_ID));
         assertNull(repository.get(RUSSIAN_RESTAURANT_ID));
     }
 
     @Test
-    public void deleteNotFound()
-    {
+    public void deleteNotFound() {
         assertFalse(repository.delete(-1));
     }
 
     @Test
-    public void getById()
-    {
-        assertEquals(RUSSIAN_RESTAURANT,repository.get(RUSSIAN_RESTAURANT_ID));
+    public void getById() {
+        assertEquals(RUSSIAN_RESTAURANT, repository.get(RUSSIAN_RESTAURANT_ID));
     }
 
     @Test
-    public void update()
-    {
+    public void update() {
 
-        assertEquals(UPDATED_RESTAURANT,repository.save(UPDATED_RESTAURANT));
+        assertEquals(UPDATED_RESTAURANT, repository.save(UPDATED_RESTAURANT));
     }
 }

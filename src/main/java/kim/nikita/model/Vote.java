@@ -1,6 +1,8 @@
 package kim.nikita.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 
@@ -13,11 +15,13 @@ import javax.persistence.*;
 public class Vote extends AbstractBaseEntity {
 
     @OneToOne(cascade = CascadeType.MERGE)
+    @JsonIgnore
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
 
 
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "restaurant_id", insertable = true, updatable = true)
     private Restaurant restaurant;
 

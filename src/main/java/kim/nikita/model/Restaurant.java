@@ -1,6 +1,8 @@
 package kim.nikita.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
@@ -17,12 +19,13 @@ import java.util.Set;
 public class Restaurant extends AbstractNamedEntity {
 
 
-    @OneToMany(mappedBy = "restaurant")
+    @OneToMany(mappedBy = "restaurant", fetch = FetchType.EAGER)
     private Set<Menu> menus;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "restaurant_id")
     private Set<Vote> votes;
+
 
     public Restaurant(Integer id, String name) {
         super(id, name);

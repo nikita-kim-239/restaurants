@@ -10,8 +10,7 @@ public class SecurityUtil {
         SecurityUtil.userId = userId;
     }
 
-    private static int userId=1;
-
+    private static int userId = 1;
 
 
 }

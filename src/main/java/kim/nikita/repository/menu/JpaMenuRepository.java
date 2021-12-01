@@ -35,7 +35,7 @@ public class JpaMenuRepository implements MenuRepository {
 
     @Override
     public Menu get(Integer id) {
-        return em.find(Menu.class,id);
+        return em.find(Menu.class, id);
     }
 
     @Override

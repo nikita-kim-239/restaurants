@@ -13,31 +13,31 @@ import java.util.Set;
         @NamedQuery(name = "GET_ALL_RESTAURANTS", query = "SELECT r FROM Restaurant r ORDER BY r.name")
 })
 @Entity
-@Table(name="restaurants")
-public class Restaurant extends AbstractNamedEntity{
+@Table(name = "restaurants")
+public class Restaurant extends AbstractNamedEntity {
 
 
-        @OneToMany(mappedBy="restaurant")
-        private Set<Menu> menus;
+    @OneToMany(mappedBy = "restaurant")
+    private Set<Menu> menus;
 
-        @OneToMany
-        @JoinColumn(name = "restaurant_id")
-        private Set<Vote> votes;
+    @OneToMany
+    @JoinColumn(name = "restaurant_id")
+    private Set<Vote> votes;
 
-        public Restaurant(Integer id, String name) {
-            super(id,name);
+    public Restaurant(Integer id, String name) {
+        super(id, name);
 
-        }
+    }
 
-        public Restaurant() {
-        }
+    public Restaurant() {
+    }
 
 
-        @Override
-        public String toString() {
-            return "Restaurant{" +
-                    "id=" + id +
-                    ", name='" + name + '\'' +
-                    '}';
-        }
+    @Override
+    public String toString() {
+        return "Restaurant{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }

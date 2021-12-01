@@ -7,7 +7,6 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.Set;
 
 @NamedQueries({
@@ -15,17 +14,17 @@ import java.util.Set;
         @NamedQuery(name = "GET_ALL_SORTED", query = "SELECT u FROM User u LEFT JOIN FETCH u.roles ORDER BY u.name, u.email")
 })
 @Entity
-@Table(name="users")
-public class User extends AbstractNamedEntity{
+@Table(name = "users")
+public class User extends AbstractNamedEntity {
 
 
-    @Column(name="email",nullable=false,unique=true)
+    @Column(name = "email", nullable = false, unique = true)
     @Email
     @NotBlank
-    @Size(max=50)
+    @Size(max = 50)
     private String email;
 
-    @Column(name="registered",nullable = false,columnDefinition = "timestamp default now()")
+    @Column(name = "registered", nullable = false, columnDefinition = "timestamp default now()")
     @NotNull
     private LocalDateTime registered = LocalDateTime.now();
 
@@ -35,23 +34,22 @@ public class User extends AbstractNamedEntity{
     private String password;
 
     @Column(name = "enabled", nullable = false, columnDefinition = "bool default true")
-    private boolean enabled=true;
+    private boolean enabled = true;
 
     @Enumerated(EnumType.STRING)
-    @CollectionTable(name="user_roles",joinColumns = @JoinColumn(name="user_id"))
-    @Column(name="role")
+    @CollectionTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"))
+    @Column(name = "role")
     @ElementCollection(fetch = FetchType.EAGER)
     private Set<Role> roles;
 
-    @OneToOne(mappedBy="user")
+    @OneToOne(mappedBy = "user")
     private Vote vote;
 
-    public User()
-        {
+    public User() {
 
-        }
+    }
 
-    public User(Integer id, String name, String email,  String password, Set<Role> roles) {
+    public User(Integer id, String name, String email, String password, Set<Role> roles) {
         super(id, name);
         this.email = email;
         this.password = password;

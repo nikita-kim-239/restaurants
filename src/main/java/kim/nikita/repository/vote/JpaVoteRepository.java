@@ -1,7 +1,6 @@
 package kim.nikita.repository.vote;
 
 
-
 import kim.nikita.model.Vote;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -30,16 +29,16 @@ public class JpaVoteRepository implements VoteRepository {
 
     @Override
     @Transactional
-    public boolean delete (Integer id) {
+    public boolean delete(Integer id) {
 
-            Query query = em.createQuery("DELETE FROM Vote v WHERE v.id=:id");
-            return query.setParameter("id", id).executeUpdate() != 0;
+        Query query = em.createQuery("DELETE FROM Vote v WHERE v.id=:id");
+        return query.setParameter("id", id).executeUpdate() != 0;
 
     }
 
     @Override
     public Vote get(Integer id) {
-        return em.find(Vote.class,id);
+        return em.find(Vote.class, id);
     }
 
     @Override

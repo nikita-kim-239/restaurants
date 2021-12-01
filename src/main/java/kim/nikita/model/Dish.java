@@ -6,27 +6,25 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name="dishes")
+@Table(name = "dishes")
 @NamedQueries({
 
         @NamedQuery(name = "GET_ALL_DISHES", query = "SELECT d FROM Dish d ORDER BY d.name")
 })
-public class Dish extends AbstractNamedEntity{
+public class Dish extends AbstractNamedEntity {
 
 
-    @OneToOne(mappedBy="dish")
+    @OneToOne(mappedBy = "dish")
     private Menu menu;
 
-    public Dish()
-        {
+    public Dish() {
 
-        }
+    }
 
-    public Dish(Integer id,String name)
-        {
-            super(id,name);
+    public Dish(Integer id, String name) {
+        super(id, name);
 
-        }
+    }
 
     @Override
     public String toString() {

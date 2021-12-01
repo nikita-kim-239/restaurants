@@ -1,9 +1,15 @@
-DELETE FROM menus;
-DELETE FROM votes;
-DELETE FROM user_roles;
-DELETE FROM users;
-DELETE FROM dishes;
-DELETE FROM restaurants;
+DELETE
+FROM menus;
+DELETE
+FROM votes;
+DELETE
+FROM user_roles;
+DELETE
+FROM users;
+DELETE
+FROM dishes;
+DELETE
+FROM restaurants;
 ALTER SEQUENCE global_seq RESTART WITH 100000;
 
 INSERT INTO users (name, email, password)
@@ -30,16 +36,16 @@ VALUES ('Russian'),
        ('Chinese');
 
 INSERT INTO votes (user_id, restaurant_id)
-VALUES (100000,100008),
-       (100001,100009);
+VALUES (100000, 100008),
+       (100001, 100009);
 
 
-INSERT INTO menus (restaurant_id,dish_id,price)
-VALUES (100008,100005,100),
-       (100008,100006,200),
-       (100009,100004,50),
-       (100010,100003,90),
-       (100011,100007,300);
+INSERT INTO menus (restaurant_id, dish_id, price)
+VALUES (100008, 100005, 100),
+       (100008, 100006, 200),
+       (100009, 100004, 50),
+       (100010, 100003, 90),
+       (100011, 100007, 300);
 
 
 

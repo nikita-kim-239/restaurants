@@ -1,7 +1,6 @@
 package kim.nikita.repository.menu;
 
 
-
 import kim.nikita.model.Menu;
 
 import java.util.List;
@@ -15,5 +14,5 @@ public interface MenuRepository {
     Menu get(Integer id);
 
     List<Menu> getAll();
-    
+
 }

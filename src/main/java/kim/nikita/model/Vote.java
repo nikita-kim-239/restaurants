@@ -9,8 +9,8 @@ import javax.persistence.*;
         @NamedQuery(name = "GET_ALL_VOTES", query = "SELECT v FROM Vote v")
 })
 @Entity
-@Table(name="votes")
-public class Vote extends AbstractBaseEntity{
+@Table(name = "votes")
+public class Vote extends AbstractBaseEntity {
 
     @OneToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "user_id", referencedColumnName = "id")

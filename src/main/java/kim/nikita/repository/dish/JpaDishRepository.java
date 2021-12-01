@@ -41,6 +41,6 @@ public class JpaDishRepository implements DishRepository {
 
     @Override
     public List<Dish> getAll() {
-        return em.createNamedQuery("GET_ALL_DISHES",Dish.class).getResultList();
+        return em.createNamedQuery("GET_ALL_DISHES", Dish.class).getResultList();
     }
 }

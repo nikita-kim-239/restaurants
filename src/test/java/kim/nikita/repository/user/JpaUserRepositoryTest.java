@@ -30,7 +30,7 @@ public class JpaUserRepositoryTest {
     @Test
     public void getAll() {
         List<User> all = repository.getAll();
-        assertMatch(all, user, admin);
+        assertMatch(all, admin, user);
     }
 
 

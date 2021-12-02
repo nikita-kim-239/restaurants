@@ -1,0 +1,5 @@
+Create new dish(only for admin):
+curl -H "Content-Type: application/json"  --request POST  --data "{\"name\":\"ice-cream\"}"  localhost:8080/admin/dishes --user admin@gmail.com:admin
+
+Create new restaurant(only for admin):
+curl -H "Content-Type: application/json"  --request POST  --data "{\"name\":\"Japanese\"}"  localhost:8080/admin/restaurants --user admin@gmail.com:admin

@@ -17,9 +17,9 @@ public class UserTestData {
     public static final int ADMIN_ID = START_SEQ + 1;
 
 
-    public static final User user = new User(USER_ID, "Ivan", "ivan@yandex.ru", "password", EnumSet.of(Role.USER));
-    public static final User admin = new User(ADMIN_ID, "Petr", "petr@gmail.com", "admin", EnumSet.of(Role.ADMIN));
-    public static final User updatedUser = new User(USER_ID, "Fedor", "ivan@yandex.ru", "password", EnumSet.of(Role.USER));
+    public static final User user = new User(USER_ID, "user", "user@yandex.ru", "password", EnumSet.of(Role.USER));
+    public static final User admin = new User(ADMIN_ID, "admin", "admin@gmail.com", "admin", EnumSet.of(Role.ADMIN));
+    public static final User updatedUser = new User(USER_ID, "Fedor", "user@yandex.ru", "password", EnumSet.of(Role.USER));
 
 
     public static User getNew() {

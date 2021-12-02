@@ -37,7 +37,7 @@ public class MainController {
         return new ResponseEntity<>(service.getAllRestaurants(), httpHeaders, HttpStatus.OK);
     }
 
-    @GetMapping(value="/dishes")
+    @GetMapping(value = "/dishes")
     public ResponseEntity<List<Dish>> getDishes() {
         final HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.setContentType(MediaType.APPLICATION_JSON);
@@ -59,13 +59,21 @@ public class MainController {
         return new ResponseEntity<>(created, httpHeaders, HttpStatus.CREATED);
     }
 
-    @PostMapping(value="/admin/dishes")
-    public ResponseEntity<Dish> createDish(@RequestBody Dish dish)
-    {
+    @PostMapping(value = "/admin/dishes")
+    public ResponseEntity<Dish> createDish(@RequestBody Dish dish) {
         Dish created = service.createDish(dish);
         final HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.setContentType(MediaType.APPLICATION_JSON);
         return new ResponseEntity<>(created, httpHeaders, HttpStatus.CREATED);
+    }
+
+    @PostMapping(value = "/register")
+    public ResponseEntity<User> register(@RequestBody User user) {
+        User registered = userService.register(user);
+        final HttpHeaders httpHeaders = new HttpHeaders();
+        httpHeaders.setContentType(MediaType.APPLICATION_JSON);
+        return new ResponseEntity<>(registered, httpHeaders, HttpStatus.CREATED);
+
     }
 
 }

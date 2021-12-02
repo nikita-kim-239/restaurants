@@ -18,3 +18,6 @@
 
     5)Добавить новое блюдо(доступно только админу)
     curl -H "Content-Type: application/json"  --request POST  --data "{\"name\":\"{name}\"}"  localhost:8080/admin/dishes --user {email}:{password}
+    
+    6)Зарегистрироваться(доступно всем)
+    curl -H "Content-Type: application/json"  --request POST  --data "{\"name\":\"{name}\",\"email\":\"{email}\",\"password\":\"{password}\"}"  localhost:8080/register

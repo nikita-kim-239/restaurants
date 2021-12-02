@@ -23,6 +23,10 @@ public class UserService implements UserDetailsService {
         return repository.getAll();
     }
 
+    public User register(User user) {
+        return repository.save(user);
+    }
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = repository.getByEmail(username);

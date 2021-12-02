@@ -11,7 +11,8 @@ import java.util.Set;
 
 @NamedQueries({
 
-        @NamedQuery(name = "GET_ALL_SORTED", query = "SELECT u FROM User u LEFT JOIN FETCH u.roles ORDER BY u.name, u.email")
+        @NamedQuery(name = "GET_ALL_SORTED", query = "SELECT u FROM User u LEFT JOIN FETCH u.roles ORDER BY u.name, u.email"),
+        @NamedQuery(name = "GET_BY_EMAIL", query = "SELECT u FROM User u where u.email=:email")
 })
 @Entity
 @Table(name = "users")

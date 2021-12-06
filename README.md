@@ -21,3 +21,6 @@
     
     6)Зарегистрироваться(доступно всем)
     curl -H "Content-Type: application/json"  --request POST  --data "{\"name\":\"{name}\",\"email\":\"{email}\",\"password\":\"{password}\"}"  localhost:8080/register
+
+    7)Голосовать(доступно зарегистрированным пользователям)
+    curl --request POST --user {enail}:{password}  localhost:8080/restaurant/{restaurant_id}/vote

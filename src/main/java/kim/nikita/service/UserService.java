@@ -35,4 +35,8 @@ public class UserService implements UserDetailsService {
         }
         return new AuthorizedUser(user);
     }
+
+    public User getUserByUsername(String username) {
+        return repository.getByEmail(username);
+    }
 }

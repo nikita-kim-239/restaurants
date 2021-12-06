@@ -9,6 +9,7 @@
         <http-basic/>
         <intercept-url pattern="/admin/**" access="hasRole('ADMIN')"/>
         <intercept-url pattern="/**" access="permitAll()"/>
+        <intercept-url pattern="/restaurant/**" access="hasRole('USER')"/>
         <csrf disabled="true"/>
     </http>
 

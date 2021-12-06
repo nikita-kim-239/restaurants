@@ -1,10 +1,9 @@
 package kim.nikita.web;
 
-import kim.nikita.model.Dish;
-import kim.nikita.model.Restaurant;
-import kim.nikita.model.User;
+import kim.nikita.model.*;
 import kim.nikita.service.MainService;
 import kim.nikita.service.UserService;
+import kim.nikita.util.SecurityUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -73,6 +72,17 @@ public class MainController {
         final HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.setContentType(MediaType.APPLICATION_JSON);
         return new ResponseEntity<>(registered, httpHeaders, HttpStatus.CREATED);
+
+    }
+
+    @PostMapping(value = "/restaurant/{restaurant_id}/vote")
+    public ResponseEntity<Vote> vote(@PathVariable String restaurant_id) {
+        Restaurant restaurant = service.getRestaurantById(Integer.parseInt(restaurant_id));
+        User user = userService.getUserByUsername(SecurityUtil.authUserName());
+        Vote newVote = service.makeVote(new Vote(null, user, restaurant));
+        final HttpHeaders httpHeaders = new HttpHeaders();
+        httpHeaders.setContentType(MediaType.APPLICATION_JSON);
+        return new ResponseEntity<>(newVote, httpHeaders, HttpStatus.CREATED);
 
     }
 

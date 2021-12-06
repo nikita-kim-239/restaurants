@@ -57,5 +57,8 @@ public class AuthorizedUser implements UserDetails {
         return true;
     }
 
+    public User getUser() {
+        return user;
+    }
 
 }
